@@ -1,0 +1,137 @@
+/* ==== HEADER GENERAL ==== */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  padding: 0 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  background: transparent;
+}
+
+/* Scroll Effect */
+.header.scrolled {
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* ==== LOGO ==== */
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.logo .nova {
+  color: #00c853 
+}
+
+.logo .clean {
+  color: #0077ff;
+}
+
+/* ==== NAV LINKS (Desktop / Tablet) ==== */
+.nav-links {
+  margin-right: 60px;
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: #0077ff;
+}
+
+/* ==== HAMBURGER (Mobile) ==== */
+.hamburger {
+  margin-right: 50px;
+  display: none; 
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  gap: 5px;
+  z-index: 2000; 
+}
+
+.hamburger span {
+  width: 28px;
+  height: 3px;
+  background: #333;
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+/* animación cuando se abre */
+.hamburger.open span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* ==== MOBILE MENU ==== */
+.mobile-menu {
+  position: fixed; 
+  top: 0;
+  right: -100%; 
+  height: 100vh; 
+  width: 250px; 
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  padding-top: 100px; 
+  box-shadow: -2px 0 8px rgba(0,0,0,0.2);
+  transition: right 0.3s ease; 
+  z-index: 1500;
+}
+
+
+.mobile-menu.show {
+  right: 0; 
+}
+
+.mobile-menu a {
+  padding: 1rem 0;
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: #333;
+  border-bottom: 1px solid #eee;
+  transition: background 0.2s ease;
+}
+
+.mobile-menu a:hover {
+  background: #f5f5f5;
+}
+
+.mobile-menu a:last-child {
+  border-bottom: none;
+}
+
+/* ==== RESPONSIVE ==== */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}

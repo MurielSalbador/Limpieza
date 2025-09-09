@@ -1,0 +1,384 @@
+body { 
+  background: #eee; 
+  font-family: "Tahoma"; 
+  user-select: none; 
+}
+
+/* === ESTRUCTURA ESCRITORIO === */
+.carousel-container { 
+  display: flex; 
+  align-items: center; 
+  justify-content: left; 
+  width: 1000px; 
+  height: 400px; 
+  position: absolute; 
+  top: 0; bottom: 0; left: 0; right: 0; 
+  margin: auto; 
+  background-color: #fff; 
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); 
+  overflow: hidden; 
+}
+
+.carousel-left { 
+   position: relative; 
+  background: #fff; 
+   height: 100%;
+  width: 100%; 
+  display: flex; 
+  align-items: center; 
+  justify-content: left; 
+}
+
+.carousel-left .list { 
+  display: flex; 
+  flex-direction: column; 
+  flex-grow: 1; 
+  margin: 0; 
+  padding: 0; 
+  list-style: none; 
+}
+
+.carousel-left .list li.item input[type="radio"] { 
+  display: none; 
+}
+
+.carousel-left .list li.item input[type="radio"] ~ label { 
+  display: block; 
+  opacity: 0.5; 
+  min-height: 50px; 
+  line-height: 1.2em; 
+  cursor: pointer; 
+  padding: 10px 10px 10px 70px; 
+  white-space: normal; 
+  word-wrap: break-word; 
+  overflow: hidden; 
+  max-width: 100%; 
+  box-sizing: border-box; 
+}
+
+.carousel-left .list li.item input[type="radio"] ~ label:hover { 
+  opacity: 0.75; 
+}
+
+.carousel-left .list li.item input[type="radio"] ~ .content { 
+  position: absolute; 
+  left: 350px; 
+  top: -400px; 
+  width: 650px; 
+  height: auto;  
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center; 
+  animation-duration: 0.75s; 
+  animation-name: slideout; 
+  animation-timing-function: ease-out; 
+  text-align: center; 
+  padding: 20px; 
+  box-sizing: border-box; 
+  display: none; 
+}
+
+
+.carousel-left .list li.item input[type="radio"] ~ .content h1 { 
+  font-size: 1.5rem; 
+  font-weight: bold; 
+  margin: 20px 0 10px 0; 
+  max-width: 80%; 
+}
+
+.carousel-left .list li.item input[type="radio"] ~ .content p { 
+  font-size: 1rem; 
+  line-height: 1.6; 
+  max-width: 80%; 
+}
+
+.carousel-left .list li.item input[type="radio"]:checked ~ label { 
+  opacity: 1; 
+  border-right: solid 4px #333; 
+}
+
+.carousel-left .list li.item input[type="radio"]:checked ~ .content {
+  display: flex;
+  margin-top: -30px;
+  flex-direction: column;
+  align-items: center;     /* centra horizontal */
+  justify-content: center; /* centra vertical */
+  text-align: center;      /* centra texto */
+  animation-duration: 0.75s;
+  animation-name: slidein;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+
+.picto { 
+  height: 100px; 
+  width: 100px; 
+  background-position: center; 
+  background-size: cover; 
+  background-repeat: no-repeat; 
+}
+
+.carousel-border { 
+  background-color: #eee; 
+  height: 75%; 
+  flex-grow: 1; 
+  max-width: 2px; 
+  z-index: 0; 
+}
+
+.carousel-right { 
+  background: #fff; 
+  height: 100%; 
+  flex-grow: 3; 
+}
+
+/* Animaciones */
+@keyframes slidein { 
+  0% { top: -400px; opacity: 0; } 
+  100% { top: 0px; opacity: 1; } 
+}
+
+@keyframes slideout { 
+  0% { top: 0; opacity: 1; } 
+  100% { top: -400px; opacity: 0; } 
+}
+
+/* === MOBILE === */
+.carousel-container.mobile { 
+  display: block; 
+  width: 100%; 
+  height: auto; 
+  position: relative; 
+  box-shadow: none; 
+  background: transparent; 
+  margin: 0; 
+  padding: 10px; 
+}
+
+.accordion { 
+  list-style: none; 
+  margin: 0; 
+  padding: 0; 
+  width: 100%; 
+}
+
+.accordion-item { 
+  width: 100%; 
+  border-bottom: 1px solid #ddd; 
+}
+
+.accordion-title { 
+  width: 100%; 
+  display: block; 
+  text-align: left; 
+  padding: 15px; 
+  font-size: 1rem; 
+  font-weight: bold; 
+  border: none; 
+  background: #f9f9f9; 
+  cursor: pointer; 
+  transition: background 0.3s; 
+  box-sizing: border-box; 
+}
+
+.accordion-title:hover { background: #eee; }
+.accordion-title.active { background: #e0e0e0; }
+
+.accordion-content { 
+  max-height: 0; 
+  overflow: hidden; 
+  padding: 0 15px; 
+  text-align: center; 
+  transition: max-height 0.4s ease, padding 0.3s ease; 
+  box-sizing: border-box; 
+}
+
+.accordion-content.show { 
+  max-height: 500px; 
+  padding: 15px; 
+}
+
+.accordion-content h1 { font-size: 1.2rem; margin: 10px 0; }
+.accordion-content p { font-size: 0.95rem; line-height: 1.5; }
+
+.picto { margin: 10px auto; }
+
+/* Texto arriba */
+.about-text { 
+  color: #1f2937; 
+  line-height: 1.6; 
+  font-size: 1rem; 
+  font-weight: 500; 
+  margin-bottom: 1.5rem; 
+  text-align: center; 
+}
+
+.highlight { color: rgb(100, 181, 53); font-weight: 1000; font-size: 26px; }
+.highlight2{ color: rgb(23, 111, 164); font-weight: 700; font-size: 26px; }
+
+/* Caja naranja */
+.about-box { 
+  background: #ff9d2e; 
+  border-radius: 20px; 
+  padding: 20px; 
+  text-align: center; 
+  color: #fff; 
+  position: relative; 
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25); 
+}
+
+.about-title { font-size: 1.3rem; font-weight: 800; margin-bottom: 1rem; }
+
+/* Lista en mobile */
+.mobile-list { list-style: none; padding: 0; margin: 0; }
+.mobile-list li { margin: 15px 0; }
+.mobile-list .picto { height: 60px; width: 60px; margin: 0 auto 10px; display: block; background-size: contain; background-repeat: no-repeat; }
+
+/* Burbujas decorativas */
+.circle { position: absolute; border-radius: 50%; }
+.circle-1 { top: -15px; left: -15px; width: 24px; height: 24px; background: #fdba74; }
+.circle-2 { bottom: -20px; right: 40px; width: 18px; height: 18px; background: #ea580c; }
+.circle-3 { top: 40px; right: -20px; width: 22px; height: 22px; background: #fed7aa; }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  body { 
+    overflow-x: hidden; 
+    background: #eaf6ff; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    min-height: 100vh; 
+    padding: 10px; 
+  }
+
+  .carousel-container.mobile { 
+    position: relative; 
+    width: 95%;       
+    max-width: 340px;    
+    padding: 20px 15px;   
+    background: #ff9d2e; 
+    border-radius: 20px; 
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25); 
+    text-align: center; 
+    z-index: 1; 
+    margin: auto;      
+  }
+
+  /* escondemos lo de escritorio */
+  .carousel-left, .carousel-border, .carousel-right { display: none !important; }
+
+  /* Texto introductorio centrado */
+.about-text {
+  color: #241604;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  text-align: center;
+  line-height: 1.5;
+  white-space: normal !important;   
+  overflow: visible !important;     
+  text-overflow: unset !important;
+  display: block;
+  word-break: break-word;  
+}
+
+  /* acordeón centrado y compacto */
+  .accordion { 
+    list-style: none; 
+    margin: 0 auto; 
+    padding: 0; 
+    width: 100%; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    gap: 10px; 
+  }
+
+  .accordion-item { 
+    width: 100%; 
+    max-width: 280px;   
+    border: none; 
+  }
+
+  .about-title { 
+    font-size: 1.6em; 
+    font-weight: 800; 
+    margin-bottom: 1.5rem; 
+    color: #fff; 
+    text-align: center; 
+  }
+
+ .accordion-title {
+    display: flex;
+    flex-direction: column;  
+    align-items: center;
+    justify-content: center;
+    gap: 6px;                
+    width: 100%;
+    padding: 10px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    border: none;
+    background: #aa5d05;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #ffffff;
+    transition: background 0.3s ease;
+    text-align: center;
+  }
+
+  .accordion-title:hover { background: #503002; }
+  .accordion-title.active { background: #693a04; }
+
+   .accordion-title .picto {
+    height: 32px;   
+    width: 32px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-bottom: 4px; 
+  }
+
+  .accordion-content { 
+    max-height: 0; 
+    overflow: hidden; 
+    transition: max-height 0.4s ease, padding 0.3s ease; 
+    text-align: center; 
+  }
+
+  .accordion-content.show { 
+    max-height: 300px; 
+    padding: 8px 0; 
+  }
+
+  .accordion-content h1 { 
+    font-size: 0.95rem; 
+    margin: 6px 0; 
+    font-weight: bold; 
+    color: #241604; 
+  }
+
+  .accordion-content p { 
+    font-size: 0.9rem; 
+    line-height: 1.4; 
+    margin: 0; 
+    color: #241604; 
+  }
+
+  /* burbujas decorativas más chicas */
+  .carousel-container::before, 
+  .carousel-container::after { 
+    content: ""; 
+    position: absolute; 
+    border-radius: 50%; 
+    background: rgba(255, 255, 255, 0.6); 
+    z-index: -1; 
+  }
+  .carousel-container::before { width: 40px; height: 40px; bottom: -15px; left: -15px; }
+  .carousel-container::after { width: 25px; height: 25px; top: -10px; right: -10px; }
+
+  .carousel-container .bubble { position: absolute; border-radius: 50%; background: rgba(255, 255, 255, 0.6); z-index: -1; }
+  .carousel-container .bubble.b1 { width: 10px; height: 10px; top: 10px; left: -5px; }
+  .carousel-container .bubble.b2 { width: 15px; height: 15px; bottom: 5px; right: -10px; }
+}

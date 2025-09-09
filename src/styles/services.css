@@ -1,0 +1,364 @@
+/* Evitar scroll lateral en toda la página */
+body {
+  overflow-x: hidden;
+}
+
+.services-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  max-width: 900px;
+  margin: 40px auto;
+  margin-top: 170px;
+}
+
+.cards {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1000px;
+}
+
+.card {
+  position: absolute;
+  width: 70%;
+  height: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: 
+    transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), 
+    opacity 0.6s ease, 
+    box-shadow 0.4s ease;
+  cursor: pointer;
+  opacity: 0.4;
+  transform: scale(0.8);
+  z-index: 0;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3),
+              0 0 20px rgba(66, 138, 166, 0.4); 
+}
+
+/* Activa la card central */
+.card.active {
+  transform: scale(1) translateX(0);
+  opacity: 1;
+  z-index: 3;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* Cards laterales */
+.card.left {
+  transform: translateX(-220px) scale(0.85);
+  opacity: 0.5;
+  z-index: 1;
+}
+.card.right {
+  transform: translateX(220px) scale(0.85);
+  opacity: 0.5;
+  z-index: 1;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.card:hover img {
+  transform: scale(1.08); /* zoom de la imagen */
+  transition: transform 0.6s ease;
+}
+
+.card-title {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 12px;
+  background: rgba(0,0,0,0.55);
+  color: #fff;
+  font-size: 1.1rem;       /* un poquito más chico */
+  font-weight: 600;
+  text-align: center;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+
+  white-space: normal;     /* permite saltos de línea */
+  word-wrap: break-word;   /* corta palabras largas si es necesario */
+  line-height: 1.3;        /* mejora la legibilidad */
+  max-height: 4.4em;       /* hasta 3 líneas aprox */
+  overflow: hidden;        /* oculta lo que sobrepase */
+  text-overflow: ellipsis; /* añade "..." si se corta */
+}
+
+.indicators {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #bbb;
+  cursor: pointer;
+ transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+.dot:hover {
+  transform: scale(1.3);
+  box-shadow: 0 0 8px rgba(66, 138, 166, 0.6);
+}
+.dot.active {
+  background: #428aa6;
+  box-shadow: 0 0 8px rgba(66, 138, 166, 0.8);
+}
+
+/* Flechas */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.arrow:hover {
+  background: #428aa6;
+  color: #fff;
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* Flechas */
+.arrow.left {
+  left: 60px; 
+}
+
+.arrow.right {
+  right: 60px;
+}
+
+/* Flechas */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.arrow:hover {
+  background: #428aa6;
+  color: #fff;
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* Flechas */
+.arrow.left {
+  left: 60px; 
+}
+
+.arrow.right {
+  right: 60px;
+}
+
+/* Info dentro de la card */
+.card-info {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 20px;
+  background: linear-gradient(to top, rgba(0,0,0,0.65), rgba(0,0,0,0.1));
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+/* === Botón estilo #16 === */
+.service-btn {
+ margin-top: 24px;
+ 
+  position: relative;
+  display: inline-block;
+  padding: 12px 28px;
+  border: 2px solid rgb(29, 110, 159);
+  border-radius: 40px;
+  background: transparent;
+  color: rgb(29, 110, 159);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  overflow: hidden;
+  transition: color 0.4s ease;
+  z-index: 1;
+}
+
+.service-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgb(29, 110, 159);
+  z-index: -1;
+  transition: left 0.4s ease;
+}
+
+.service-btn:hover {
+  color: #0b2835; 
+}
+
+.service-btn:hover::before {
+  left: 0;
+}
+
+.card-wrapper {
+  position: absolute;
+  width: 70%;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+
+
+
+
+
+/* ==== RESPONSIVE ==== */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .cards {
+    height: 350px;
+  }
+  .card {
+    width: 80%;
+  }
+  .card.left {
+    transform: translateX(-180px) scale(0.85);
+  }
+  .card.right {
+    transform: translateX(180px) scale(0.85);
+  }
+}
+
+/* ==== CELULARES ==== */
+@media (max-width: 768px) {
+  .cards {
+  min-width: 80%;
+    height: 420px;
+    flex: 0 0 auto;
+     scroll-snap-align: center;
+     scroll-snap-type: x mandatory; /* efecto de snap */
+    -webkit-overflow-scrolling: touch;
+     overflow-x: hidden;
+     overflow-x: auto;
+  }
+
+  .card-wrapper {
+    
+    min-width: 80%;             
+    height: 420px;
+    flex: 0 0 auto;
+    scroll-snap-align: center;    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;                    
+  }
+  
+  .card { 
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+  }
+
+   .card-title {
+    font-size: 1rem;
+    padding: 10px;
+    line-height: 1.2;
+    max-height: 3.6em; /* hasta 3 líneas */
+  }
+
+  .arrow {
+    display: none;
+  }
+
+   /* === Misma lógica para los botones en móviles === */
+  .service-btn {
+    margin-top: 24px;
+    position: relative;
+    display: inline-block;
+    padding: 12px 28px;
+    border: 2px solid rgb(29, 110, 159);
+    border-radius: 40px;
+    background: transparent;
+    color: rgb(29, 110, 159);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    overflow: hidden;
+    transition: color 0.4s ease;
+    z-index: 1;
+  }
+
+  .service-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgb(29, 110, 159);
+    z-index: -1;
+    transition: left 0.4s ease;
+  }
+
+.service-btn.active {
+  color: #051f2b;
+}
+
+.service-btn.active::before {
+  left: 0;
+}
+
+}
+
+
+
+
+
