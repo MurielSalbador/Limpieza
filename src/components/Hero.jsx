@@ -6,12 +6,12 @@ const Hero = () => {
     <>
     <section className="hero">
       {/* Imagen del equipo */}
-      <div className="hero-img">
+      <div className="hero-img"  data-aos-delay="150">
         <img src="/images/hero/Limpieza.png" alt="Equipo Nova Clean" />
       </div>
 
       {/* Texto principal (encima de burbujas) */}
-      <div className="hero-content">
+      <div className="hero-content" data-aos="zoom-in" data-aos-delay="300">
         <h1>BIENVENIDO A <br/> NOVA CLEAN</h1>
         <p className="sub">
           Somos especialistas en limpieza profesional de casas, oficinas y
@@ -20,13 +20,13 @@ const Hero = () => {
           Nuestro compromiso es entregar resultados impecables, seguros y
           agradables en cada espacio.
         </p>
-        <button className="shadow__btn">Contáctanos</button>
+        <button className="shadow__btn" data-aos="zoom-in" data-aos-delay="600">Contáctanos</button>
       </div>
     </section>
 
-    <main className="hero-main">
+    <main className="hero-main" >
        {/* Numero de contacto */}
-      <div className="hero-contact-info">
+      <div className="hero-contact-info" >
         <h2>Llamar +3417549554</h2>
       </div>
     </main>

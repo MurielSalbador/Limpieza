@@ -79,13 +79,13 @@ body {
 }
 
 .hero-main {
- background-color: rgb(225, 242, 255);
+ background-color: rgb(193, 216, 235);
  display: flex;
   justify-content: center;
 }
 
 .hero-contact-info {
-  background-color: rgb(225, 242, 255);
+  background-color: rgb(217, 233, 247);
   position: relative;  /* ✅ ahora ocupa su lugar en el flujo */
   height: 130px;
   width: 100%;
