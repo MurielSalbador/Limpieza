@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import "../styles/services.css";
 
@@ -32,7 +33,7 @@ const services = [
 
 export default function Services() {
   const [selected, setSelected] = useState(0);
-  const [active, setActive] = useState(false);
+  const navigate = useNavigate();
 
   const prevService = () => {
     setSelected((prev) => (prev === 0 ? services.length - 1 : prev - 1));
@@ -40,6 +41,10 @@ export default function Services() {
 
   const nextService = () => {
     setSelected((prev) => (prev === services.length - 1 ? 0 : prev + 1));
+  };
+
+  const handleViewService = () => {
+    navigate("/services", { state: { service: services[selected] } });
   };
 
   return (
@@ -66,13 +71,13 @@ export default function Services() {
           <div key={index} className="card-wrapper">
             <div
               className={`card 
-          ${selected === index ? "active" : ""} 
-          ${
-            index === (selected - 1 + services.length) % services.length
-              ? "left"
-              : ""
-          } 
-          ${index === (selected + 1) % services.length ? "right" : ""}`}
+                ${selected === index ? "active" : ""} 
+                ${
+                  index === (selected - 1 + services.length) % services.length
+                    ? "left"
+                    : ""
+                } 
+                ${index === (selected + 1) % services.length ? "right" : ""}`}
               onClick={() => setSelected(index)}
             >
               <img src={service.img} alt={service.titulo} />
@@ -84,6 +89,7 @@ export default function Services() {
         ))}
       </div>
 
+      {/* Botón "Ver servicio" */}
       <div
         data-aos="fade-up"
         style={{
@@ -91,15 +97,9 @@ export default function Services() {
           textAlign: "center",
         }}
       >
-        {/* Botón único, centrado debajo */}
-        {selected !== null && (
-            <button 
-      className={`service-btn ${active ? "active" : ""}`} 
-      onClick={() => setActive(true)}
-    >
-      Ver servicio
-    </button>
-        )}
+        <button className="service-btn" onClick={handleViewService}>
+          Ver servicio
+        </button>
       </div>
 
       {/* Dots */}

@@ -3,40 +3,34 @@ import "../styles/hero.css";
 
 const Hero = () => {
   return (
+    <>
     <section className="hero">
       {/* Imagen del equipo */}
       <div className="hero-img">
-        <img src="/images/hero/Hero.png" alt="Equipo Nova Clean" />
-      </div>
-
-      {/* Imagen burbujas full width */}
-      <div className="hero-img-bubbles">
-        <img src="/images/hero/Burbujas.png" alt="Burbujas decorativas" />
+        <img src="/images/hero/Limpieza.png" alt="Equipo Nova Clean" />
       </div>
 
       {/* Texto principal (encima de burbujas) */}
       <div className="hero-content">
-        <h1>
-          Bienvenido a <span className="highlight">NOVA CLEAN</span>
-        </h1>
-        <p className="subtitle">“Limpio como nuevo”</p>
+        <h1>BIENVENIDO A <br/> NOVA CLEAN</h1>
         <p className="sub">
           Somos especialistas en limpieza profesional de casas, oficinas y
-          comercios.  
+          comercios.
+          <br/>
           Nuestro compromiso es entregar resultados impecables, seguros y
           agradables en cada espacio.
         </p>
-      </div>
-
-      {/* Forma ondulada + logo */}
-      <div className="wave">
-        <img
-          src="/images/hero/BurbujasLogo.png"
-          alt="Logo Nova Clean"
-          className="hero-logo"
-        />
+        <button className="shadow__btn">Contáctanos</button>
       </div>
     </section>
+
+    <main className="hero-main">
+       {/* Numero de contacto */}
+      <div className="hero-contact-info">
+        <h2>Llamar +3417549554</h2>
+      </div>
+    </main>
+    </>
   );
 };
 

@@ -1,32 +1,28 @@
 body { 
-  background: #eee; 
   font-family: "Tahoma"; 
   user-select: none; 
 }
 
 /* === ESTRUCTURA ESCRITORIO === */
 .carousel-container { 
+  background: rgb(128, 226, 71);
   display: flex; 
-  align-items: center; 
-  justify-content: left; 
-  width: 1000px; 
-  height: 400px; 
-  position: absolute; 
-  top: 0; bottom: 0; left: 0; right: 0; 
-  margin: auto; 
-  background-color: #fff; 
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); 
-  overflow: hidden; 
+  justify-content: center;   
+  align-items: center;       
+  width: 100%;               /* 🔥 ocupa todo el ancho */
+  max-width: none;           /* elimina el límite de 1600px */
+  height: 700px;             /* 🔥 más alto para destacar */
+  margin: 0;                 /* 🔥 pegado al bloque superior */
+  border-radius: 0;          /* 🔥 esquinas rectas */
+  box-shadow: none;          /* opcional: sin sombra, queda estilo "sección" */
+  overflow: hidden;           
+  position: relative;
 }
 
 .carousel-left { 
-   position: relative; 
-  background: #fff; 
-   height: 100%;
-  width: 100%; 
+  height: 100%;
   display: flex; 
-  align-items: center; 
-  justify-content: left; 
+  align-items: center;  
 }
 
 .carousel-left .list { 
@@ -38,77 +34,13 @@ body {
   list-style: none; 
 }
 
-.carousel-left .list li.item input[type="radio"] { 
-  display: none; 
-}
-
-.carousel-left .list li.item input[type="radio"] ~ label { 
-  display: block; 
-  opacity: 0.5; 
-  min-height: 50px; 
-  line-height: 1.2em; 
-  cursor: pointer; 
-  padding: 10px 10px 10px 70px; 
-  white-space: normal; 
-  word-wrap: break-word; 
-  overflow: hidden; 
-  max-width: 100%; 
-  box-sizing: border-box; 
-}
-
-.carousel-left .list li.item input[type="radio"] ~ label:hover { 
-  opacity: 0.75; 
-}
-
-.carousel-left .list li.item input[type="radio"] ~ .content { 
-  position: absolute; 
-  left: 350px; 
-  top: -400px; 
-  width: 650px; 
-  height: auto;  
-  display: flex; 
-  flex-direction: column; 
-  align-items: center; 
-  justify-content: center; 
-  animation-duration: 0.75s; 
-  animation-name: slideout; 
-  animation-timing-function: ease-out; 
-  text-align: center; 
-  padding: 20px; 
-  box-sizing: border-box; 
-  display: none; 
-}
-
-
-.carousel-left .list li.item input[type="radio"] ~ .content h1 { 
-  font-size: 1.5rem; 
-  font-weight: bold; 
-  margin: 20px 0 10px 0; 
-  max-width: 80%; 
-}
-
-.carousel-left .list li.item input[type="radio"] ~ .content p { 
-  font-size: 1rem; 
-  line-height: 1.6; 
-  max-width: 80%; 
-}
-
-.carousel-left .list li.item input[type="radio"]:checked ~ label { 
-  opacity: 1; 
-  border-right: solid 4px #333; 
-}
-
-.carousel-left .list li.item input[type="radio"]:checked ~ .content {
+.carousel-layout {
   display: flex;
-  margin-top: -30px;
-  flex-direction: column;
-  align-items: center;     /* centra horizontal */
-  justify-content: center; /* centra vertical */
-  text-align: center;      /* centra texto */
-  animation-duration: 0.75s;
-  animation-name: slidein;
-  animation-fill-mode: forwards;
-  animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  justify-content: flex-start;
+  align-items: center;
+  gap: 50px;
+  width: 100%;
+  height: 100%;
 }
 
 .picto { 
@@ -120,18 +52,95 @@ body {
 }
 
 .carousel-border { 
-  background-color: #eee; 
-  height: 75%; 
-  flex-grow: 1; 
+  background-color: #122903; 
+  height: 100%; 
+  flex-grow: 8; 
   max-width: 2px; 
+  margin: 0 150px;
   z-index: 0; 
 }
 
-.carousel-right { 
-  background: #fff; 
-  height: 100%; 
-  flex-grow: 3; 
+.carousel-right {
+  flex: 1;               /* ocupa el espacio sobrante */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;    
 }
+
+.carousel-right .content {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  width: 80%;
+  max-width: 650px;
+  position: relative;  
+}
+
+.carousel-right .content.show {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  width: 80%;
+  max-width: 650px;
+}
+
+.carousel-left .list li.item {
+  opacity: 0.6;
+  cursor: pointer;
+  padding: 25px 75px;
+  transition: 0.3s ease;
+  border-right: 4px solid transparent; /* reserva espacio */
+  white-space: nowrap;
+  font-weight: 600; /* 🔑 todos iguales, evita el "salto" */
+}
+
+.carousel-left .list li.item label {
+  display: inline-block;
+  width: 100%;
+  min-width: 280px;
+  text-align: left;
+  transition: color 0.3s ease, background 0.3s ease;
+}
+
+.carousel-left .list li.item.active {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.05);
+  color: #000;
+  border-right: 4px solid #64b535; /* color destacado, mismo ancho */
+}
+
+
+.carousel-left ul li {
+  padding: 12px 18px;
+  border-left: 3px solid transparent;
+  cursor: pointer;
+  transition: 
+    border-color 0.3s ease,
+    background-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease; /* animación suave */
+}
+
+.carousel-left ul li:hover {
+  background-color: #f9f9f9;
+  transform: scale(1.02); /* leve zoom sin mover layout */
+}
+
+.carousel-left ul li.active {
+  border-color: #083a08;
+  font-weight: bold;
+  color: #083a08;
+  background-color: #f0f8ff;
+  transform: scale(1.05); /* más marcado pero en el mismo sitio */
+}
+
 
 /* Animaciones */
 @keyframes slidein { 
@@ -149,11 +158,13 @@ body {
   display: block; 
   width: 100%; 
   height: auto; 
-  position: relative; 
-  box-shadow: none; 
-  background: transparent; 
-  margin: 0; 
-  padding: 10px; 
+  min-height: 100vh;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: none;  
+  background-color: #c0d8ff;
 }
 
 .accordion { 
@@ -165,7 +176,7 @@ body {
 
 .accordion-item { 
   width: 100%; 
-  border-bottom: 1px solid #ddd; 
+ 
 }
 
 .accordion-title { 
@@ -208,7 +219,7 @@ body {
 .about-text { 
   color: #1f2937; 
   line-height: 1.6; 
-  font-size: 1rem; 
+  font-size: 1.4rem; 
   font-weight: 500; 
   margin-bottom: 1.5rem; 
   text-align: center; 
@@ -243,142 +254,66 @@ body {
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
-  body { 
-    overflow-x: hidden; 
-    background: #eaf6ff; 
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    min-height: 100vh; 
-    padding: 10px; 
+    .carousel-container {
+    width: 100% !important;      /* ocupa todo el ancho de la pantalla */
+    margin: 0 auto !important;   /* centra sin empujar a los costados */
+    padding: 10px;               /* un poco de respiro interno */
+    height: auto !important;     /* que crezca según el contenido */
+    overflow-x: hidden;          /* evita scroll lateral */
+    box-sizing: border-box;      /* incluye padding dentro del ancho */
+    border-radius: 0 !important;
   }
 
-  .carousel-container.mobile { 
-    position: relative; 
-    width: 95%;       
-    max-width: 340px;    
-    padding: 20px 15px;   
-    background: #ff9d2e; 
-    border-radius: 20px; 
-    box-shadow: 0 6px 18px rgba(0,0,0,0.25); 
-    text-align: center; 
-    z-index: 1; 
-    margin: auto;      
-  }
-
-  /* escondemos lo de escritorio */
-  .carousel-left, .carousel-border, .carousel-right { display: none !important; }
-
-  /* Texto introductorio centrado */
-.about-text {
-  color: #241604;
-  font-size: 1.1rem;
-  font-weight: 500;
-  margin-bottom: 1rem;
-  text-align: center;
-  line-height: 1.5;
-  white-space: normal !important;   
-  overflow: visible !important;     
-  text-overflow: unset !important;
-  display: block;
-  word-break: break-word;  
-}
-
-  /* acordeón centrado y compacto */
-  .accordion { 
-    list-style: none; 
-    margin: 0 auto; 
-    padding: 0; 
-    width: 100%; 
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    gap: 10px; 
-  }
-
-  .accordion-item { 
-    width: 100%; 
-    max-width: 280px;   
-    border: none; 
-  }
-
-  .about-title { 
-    font-size: 1.6em; 
-    font-weight: 800; 
-    margin-bottom: 1.5rem; 
-    color: #fff; 
-    text-align: center; 
-  }
-
- .accordion-title {
+  .cards-about {
     display: flex;
-    flex-direction: column;  
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 70px;
+    width: 100%;
+  }
+
+  .cards-about .card-about {
+     position: relative;   
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 6px;                
-    width: 100%;
-    padding: 10px;
-    font-size: 0.95rem;
-    font-weight: bold;
-    border: none;
-    background: #aa5d05;
+    padding: 30px 20px;
+    gap: 10px;
+  width: 70%;
     border-radius: 10px;
+    color: #fff;
     cursor: pointer;
-    color: #ffffff;
-    transition: background 0.3s ease;
-    text-align: center;
+    transition: 400ms transform, 400ms box-shadow, 400ms background-color;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: auto ;
   }
 
-  .accordion-title:hover { background: #503002; }
-  .accordion-title.active { background: #693a04; }
+  .cards-about .red { background-color: #f43f5e; }
+  .cards-about .blue { background-color: #3b82f6; }
+  .cards-about .green { background-color: #22c55e; }
 
-   .accordion-title .picto {
-    height: 32px;   
-    width: 32px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    margin-bottom: 4px; 
+  .cards-about .card-about p.tip {
+    font-size: 1.5em;
+    font-weight: 700;
+    margin: 10px 0 5px;
   }
 
-  .accordion-content { 
-    max-height: 0; 
-    overflow: hidden; 
-    transition: max-height 0.4s ease, padding 0.3s ease; 
-    text-align: center; 
+  .cards-about .card-about p.second-text {
+    font-size: 1.3em;
+    margin: 0;
   }
 
-  .accordion-content.show { 
-    max-height: 300px; 
-    padding: 8px 0; 
+  .cards-about .card-about:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
   }
 
-  .accordion-content h1 { 
-    font-size: 0.95rem; 
-    margin: 6px 0; 
-    font-weight: bold; 
-    color: #241604; 
+  .cards-about:hover > .card-about:not(:hover) {
+    filter: none;
+    transform: none;
+    box-shadow: none;
   }
-
-  .accordion-content p { 
-    font-size: 0.9rem; 
-    line-height: 1.4; 
-    margin: 0; 
-    color: #241604; 
-  }
-
-  /* burbujas decorativas más chicas */
-  .carousel-container::before, 
-  .carousel-container::after { 
-    content: ""; 
-    position: absolute; 
-    border-radius: 50%; 
-    background: rgba(255, 255, 255, 0.6); 
-    z-index: -1; 
-  }
-  .carousel-container::before { width: 40px; height: 40px; bottom: -15px; left: -15px; }
-  .carousel-container::after { width: 25px; height: 25px; top: -10px; right: -10px; }
-
-  .carousel-container .bubble { position: absolute; border-radius: 50%; background: rgba(255, 255, 255, 0.6); z-index: -1; }
-  .carousel-container .bubble.b1 { width: 10px; height: 10px; top: 10px; left: -5px; }
-  .carousel-container .bubble.b2 { width: 15px; height: 15px; bottom: 5px; right: -10px; }
 }

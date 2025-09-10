@@ -4,6 +4,9 @@ import Hero from '../components/Hero'
 import ServiciosSlider from '../components/Services'
 import About from '../components/About'
 import Contact from '../components/Contact'
+
+import "../styles/global.css"
+
 const Home = () => {
   return (
     <>
@@ -13,20 +16,19 @@ const Home = () => {
 
     <div>
         <Hero />
+    </div> 
+
+     <div>
+      <About />
     </div>
 
-    {/* <div>
+    <div>
         <ServiciosSlider />
-    </div> */}
+    </div>
 
-    {/* <div>
-      <About />
-    </div> */}
-
-
-    {/* <div>
+     <div>
       <Contact />
-    </div> */}
+    </div>
     </>
   )
 }

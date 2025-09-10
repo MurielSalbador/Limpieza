@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -39,108 +38,87 @@ const items = [
 
 export default function Carousel() {
   const [isMobile, setIsMobile] = useState(false);
-  const [activeIndex, setActiveIndex] = useState(null);
+  const [active, setActive] = useState("personal");
 
-useEffect(() => {
-  const checkMobile = () => setIsMobile(window.innerWidth <= 768);
-  checkMobile();
-  window.addEventListener("resize", checkMobile);
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
 
-  AOS.init({ duration: 800, once: true }); 
+    AOS.init({ duration: 800, once: true });
 
-  return () => window.removeEventListener("resize", checkMobile);
-}, []);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
-  const toggleAccordion = (index) => {
-    setActiveIndex(activeIndex === index ? null : index);
-  };
+  return (
+    <div className={`carousel-container ${isMobile ? "mobile" : ""}`}>
+      {isMobile ? (
+        <>
+          {/* Texto introductorio */}
+          <p className="about-text" data-aos="fade-up">
+            En <span className="highlight">NOVA</span>{" "}
+            <span className="highlight2">CLEAN</span>, trabajamos cada día
+            trabajamos cada día para mejorar la calidad de vida de nuestros
+            clientes, ofreciendo servicios de limpieza que generan espacios
+            seguros, saludables y confortables. Nuestro propósito es crear
+            ambientes frescos, higiénicos y relucientes, para que disfrutes de
+            un entorno más agradable, ya sea en tu hogar, oficina o comercio.
+          </p>
 
- return (
-  <div className={`carousel-container ${isMobile ? "mobile" : ""}`}>
-    {isMobile ? (
-      <>
-        {/* Texto introductorio */}
-        <p className="about-text" data-aos="fade-up">
-          En <span className="highlight">NOVA</span>{" "}
-          <span className="highlight2">CLEAN</span>, trabajamos cada día...
-        </p>
-
-        {/* Caja naranja con acordeón */}
-        <div className="about-box" data-aos="zoom-in">
-          <h3 className="about-title" data-aos="fade-down">
-            Elegirnos significa contar
-          </h3>
-          <ul className="accordion">
-            {items.map((item, index) => (
-              <li key={item.key} className="accordion-item" data-aos="fade-up" data-aos-delay={index * 100}>
-                <button
-                  className={`accordion-title ${
-                    activeIndex === index ? "active" : ""
-                  }`}
-                  onClick={() => toggleAccordion(index)}
+          {/* Cards en mobile */}
+          <div className="cards-about" data-aos="zoom-in">
+            <div className="card-about red">
+              <p className="tip">Personal capacitado</p>
+              <p className="second-text">Equipo de confianza y experiencia</p>
+            </div>
+            <div className="card-about blue">
+              <p className="tip">Productos de calidad</p>
+              <p className="second-text">Eficaces y eco-amigables</p>
+            </div>
+            <div className="card-about green">
+              <p className="tip">Compromiso</p>
+              <p className="second-text">Puntualidad y flexibilidad</p>
+            </div>
+          </div>
+        </>
+      ) : (
+        <div className="carousel-layout" data-aos="fade-left">
+          {/* Lista izquierda */}
+          <div className="carousel-left">
+            <ul className="list">
+              {items.map((item, i) => (
+                <li
+                  key={item.key}
+                  className={`item ${active === item.key ? "active" : ""}`}
                 >
-                  <span
-                    className="picto small"
-                    style={{ backgroundImage: `url(${item.icon})` }}
-                  />
-                  {item.title}
-                </button>
-                <div
-                  className={`accordion-content ${
-                    activeIndex === index ? "show" : ""
-                  }`}
-                >
-                  <p>{item.text}</p>
-                </div>
-              </li>
-            ))}
-          </ul>
+                  <label onClick={() => setActive(item.key)}>
+                    {item.title}
+                  </label>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-          {/* burbujas decorativas */}
-          <span className="circle circle-1"></span>
-          <span className="circle circle-2"></span>
-          <span className="circle circle-3"></span>
-        </div>
-      </>
-    ) : (
-      <div className="carousel-layout" data-aos="fade-left">
-        <div className="carousel-left">
-          <ul className="list">
-            {items.map((item, i) => (
-              <li
+          <div className="carousel-border" />
+
+          {/* Contenido derecho */}
+          <div className="carousel-right">
+            {items.map((item) => (
+              <div
                 key={item.key}
-                className="item"
-                data-aos="fade-right"
-                data-aos-delay={i * 100}
+                className={`content ${active === item.key ? "show" : ""}`}
               >
-                <input
-                  type="radio"
-                  id={`radio_${item.key}`}
-                  name="basic_carousel"
-                  defaultChecked={i === 0}
+                <span
+                  className="picto"
+                  style={{ backgroundImage: `url(${item.icon})` }}
                 />
-                <label
-                  htmlFor={`radio_${item.key}`}
-                  className={`label_${item.key}`}
-                >
-                  {item.title}
-                </label>
-                <div className={`content content_${item.key}`}>
-                  <span
-                    className="picto"
-                    style={{ backgroundImage: `url(${item.icon})` }}
-                  />
-                  <h1>{item.title}</h1>
-                  <p>{item.text}</p>
-                </div>
-              </li>
+                <h1>{item.title}</h1>
+                <p>{item.text}</p>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
-        <div className="carousel-border" />
-        <div className="carousel-right" />
-      </div>
-    )}
-  </div>
-);
+      )}
+    </div>
+  );
 }

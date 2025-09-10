@@ -1,38 +1,43 @@
 .contact-section {
-  background: linear-gradient(135deg, rgb(29, 110, 159), rgb(225, 242, 255));
-  color: rgb(225, 242, 255);
-  padding: 3rem 2rem;
+  background: linear-gradient(180deg, rgb(225, 242, 255), #0F93FE);
+  color: rgb(39, 66, 87);
+  padding: 7rem 9rem;
   text-align: center;
   font-family: 'Inter', sans-serif;
-  border-radius: 20px;
-  max-width: 600px;
-  margin: 2rem auto;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-  overflow: hidden;
+  width: 100%;
+  min-height: 100vh; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
 }
 
 .contact-title {
-  font-size: 2.2rem;
+  font-size: 2.8rem;
   margin-bottom: 0.5rem;
-  color: #fff;
+  color: #ffffff;
   text-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
 .contact-subtitle {
-  font-size: 1.1rem;
-  margin-bottom: 2rem;
-  color: rgb(225, 242, 255);
+  font-size: 1.3rem;
+  margin-bottom: 2.5rem;
+  color: rgb(255, 255, 255);
 }
 
+/* Tarjeta de contacto */
 .contact-card {
   background: rgb(251, 148, 11);
   color: #000;
-  padding: 1.5rem;
-  border-radius: 14px;
+  padding: 2rem;
+  border-radius: 16px;
   margin-bottom: 2rem;
   font-weight: 500;
   box-shadow: 0 6px 12px rgba(0,0,0,0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  max-width: 600px;
 }
 
 .contact-card:hover {
@@ -42,7 +47,7 @@
 
 .contact-info h3 {
   margin: 1.5rem 0 0.5rem;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   color: #fff;
 }
 
@@ -58,24 +63,25 @@
   color: rgb(251, 148, 11);
 }
 
+/* Botón de WhatsApp */
 .whatsapp-btn {
   display: inline-block;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   background: rgb(251, 148, 11);
-  color: #525252;
-  padding: 0.9rem 1.8rem;
+  color: #fff;
+  padding: 1rem 2.2rem;
   border-radius: 50px;
   text-decoration: none;
   font-weight: bold;
-  font-size: 1rem;
-  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.5);
+  font-size: 1.1rem;
+  box-shadow: 0 4px 12px rgba(95, 58, 10, 0.5);
   transition: 0.3s ease;
 }
 
 .whatsapp-btn:hover {
-  background: #1ebe5b;
-  transform: scale(1.07) translateY(-3px);
-  box-shadow: 0 6px 16px rgba(37, 211, 102, 0.7);
+  background: #702f0a;
+  transform: scale(1.1) translateY(-3px);
+  box-shadow: 0 6px 16px rgba(68, 42, 4, 0.7);
 }
 
 /* AOS animations */
@@ -86,4 +92,69 @@
 
 [data-aos].aos-animate {
   opacity: 1;
+}
+
+/* 🔹 Responsividad para pantallas grandes */
+@media (min-width: 1024px) {
+  .contact-section {
+    padding: 6rem 3rem;
+  }
+
+  .contact-title {
+    font-size: 3rem;
+  }
+
+  .contact-subtitle {
+    font-size: 1.4rem;
+  }
+}
+
+/* 🔹 Responsividad para tablets */
+@media (max-width: 768px) {
+  .contact-section {
+    padding: 3rem 1.5rem;
+  }
+
+  .contact-title {
+    font-size: 2.2rem;
+  }
+
+  .contact-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .contact-card {
+    max-width: 90%;
+  }
+
+  .whatsapp-btn {
+    padding: 0.8rem 1.8rem;
+    font-size: 1rem;
+  }
+}
+
+/* 🔹 Responsividad para móviles */
+@media (max-width: 480px) {
+  .contact-section {
+    padding: 2rem 1rem;
+  }
+
+  .contact-title {
+    font-size: 1.9rem;
+  }
+
+  .contact-subtitle {
+    font-size: 1rem;
+  }
+
+  .contact-card {
+    max-width: 100%;
+    padding: 1.5rem;
+  }
+
+  .whatsapp-btn {
+    width: 100%;
+    padding: 0.9rem;
+    font-size: 1rem;
+  }
 }
