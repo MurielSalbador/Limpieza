@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import "../styles/services.css";
@@ -33,6 +33,7 @@ const services = [
 
 export default function Services() {
   const [selected, setSelected] = useState(0);
+  const scrollRef = useRef(null);
   const navigate = useNavigate();
 
   const prevService = () => {
@@ -46,6 +47,20 @@ export default function Services() {
   const handleViewService = () => {
     navigate("/services", { state: { service: services[selected] } });
   };
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+
+    const onScroll = () => {
+      const cardWidth = el.firstChild.offsetWidth; // ancho de cada tarjeta
+      const index = Math.round(el.scrollLeft / cardWidth);
+      setSelected(index);
+    };
+
+    el.addEventListener("scroll", onScroll);
+    return () => el.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <div className="services-container" data-aos="fade-up">
@@ -66,28 +81,19 @@ export default function Services() {
       </button>
 
       {/* Cards */}
-      <div className="cards" data-aos="fade-up">
-        {services.map((service, index) => (
-          <div key={index} className="card-wrapper">
-            <div
-              className={`card 
-                ${selected === index ? "active" : ""} 
-                ${
-                  index === (selected - 1 + services.length) % services.length
-                    ? "left"
-                    : ""
-                } 
-                ${index === (selected + 1) % services.length ? "right" : ""}`}
-              onClick={() => setSelected(index)}
-            >
-              <img src={service.img} alt={service.titulo} />
-              <div className="card-title" style={{ textAlign: "center" }}>
-                {service.titulo}
-              </div>
-            </div>
-          </div>
-        ))}
+      <div className="cards" ref={scrollRef} data-aos="fade-up">
+  {services.map((service, index) => (
+    <div key={index} className="card-wrapper">
+      <div
+        className={`card ${selected === index ? "active" : ""}`}
+        onClick={() => setSelected(index)}
+      >
+        <img src={service.img} alt={service.titulo} />
+        <div className="card-title">{service.titulo}</div>
       </div>
+    </div>
+  ))}
+</div>
 
       {/* Botón "Ver servicio" */}
       <div
