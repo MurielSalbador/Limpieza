@@ -51,7 +51,8 @@ export default function Carousel() {
   }, []);
 
   return (
-    <div className={`carousel-container ${isMobile ? "mobile" : ""}`}>
+    <div className="carousel-layout-container">
+    <div id="aboutUs" className={`carousel-container ${isMobile ? "mobile" : ""}`}>
       {isMobile ? (
         <>
           {/* Texto introductorio */}
@@ -82,6 +83,7 @@ export default function Carousel() {
           </div>
         </>
       ) : (
+        
         <div className="carousel-layout" data-aos="fade-left">
           {/* Lista izquierda */}
           <div className="carousel-left">
@@ -118,7 +120,9 @@ export default function Carousel() {
             ))}
           </div>
         </div>
+        
       )}
+    </div>
     </div>
   );
 }

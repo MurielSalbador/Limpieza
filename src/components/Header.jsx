@@ -1,3 +1,4 @@
+// Header.jsx
 import React, { useState, useEffect } from "react";
 import "../styles/header.css";
 
@@ -6,21 +7,21 @@ const Header = () => {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 0) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 0);
     window.addEventListener("scroll", handleScroll);
-
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const scrollToSection = (id) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+      setMenuOpen(false); // cierra menú móvil
+    }
+  };
+
   return (
     <header className={`header ${scrolled ? "scrolled" : ""}`}>
-      {/* Logo */}
       <div className="logo">
         <span className="nova">Nova</span>
         <span className="clean">Clean</span>
@@ -28,9 +29,9 @@ const Header = () => {
 
       {/* Links Desktop */}
       <nav className="nav-links">
-        <a href="#servicios">Servicios</a>
-        <a href="#contactos">Contactos</a>
-        <a href="#sobremi">Sobre mí</a>
+        <button onClick={() => scrollToSection("services")}>Servicios</button>
+        <button onClick={() => scrollToSection("contact")}>Contactos</button>
+        <button onClick={() => scrollToSection("aboutUs")}>Sobre mí</button>
       </nav>
 
       {/* Hamburguesa Mobile */}
@@ -45,15 +46,9 @@ const Header = () => {
 
       {/* Menú Mobile */}
       <div className={`mobile-menu ${menuOpen ? "show" : ""}`}>
-        <a href="#servicios" onClick={() => setMenuOpen(false)}>
-          Servicios
-        </a>
-        <a href="#contactos" onClick={() => setMenuOpen(false)}>
-          Contactos
-        </a>
-        <a href="#sobremi" onClick={() => setMenuOpen(false)}>
-          Sobre mí
-        </a>
+        <button onClick={() => scrollToSection("services")}>Servicios</button>
+        <button onClick={() => scrollToSection("contact")}>Contactos</button>
+        <button onClick={() => scrollToSection("aboutUs")}>Sobre mí</button>
       </div>
     </header>
   );

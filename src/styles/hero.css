@@ -1,4 +1,8 @@
 /* Fondo general */
+html, body {
+  overflow-x: hidden;
+}
+
 body {
   margin: 0;
   font-family: "Poppins", sans-serif;
@@ -53,6 +57,7 @@ body {
   padding: 0;
   transform: rotate(-90deg);
   margin-top: -350px;
+  background-color: rgb(192, 216, 255);
 }
 
 .hero-img-logo img {

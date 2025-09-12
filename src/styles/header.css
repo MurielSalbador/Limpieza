@@ -22,7 +22,7 @@
 
 /* ==== LOGO ==== */
 .logo {
-  font-size: 1.5rem;
+  font-size: 3rem;
   font-weight: bold;
 }
 
@@ -41,15 +41,62 @@
   gap: 2rem;
 }
 
-.nav-links a {
-  text-decoration: none;
-  color: #333;
-  font-weight: 500;
-  transition: color 0.2s ease;
+/* Reset básico para botones */
+header button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'Lato', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #1e60b6;
+  padding: 8px 16px;
+  margin: 0 8px;
+  position: relative;
+  transition: all 0.3s ease;
 }
 
-.nav-links a:hover {
-  color: #0077ff;
+/* Hover: subrayado animado */
+header button::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+  transition: width 0.3s ease;
+}
+
+header button:hover::after {
+  width: 100%;
+}
+
+/* Botones activos (cuando quieras marcar la sección actual) */
+header button.active {
+  color: #ffeb3b; /* amarillo ejemplo */
+}
+
+header button.active::after {
+  width: 100%;
+  background-color: #ffeb3b;
+}
+
+/* Mobile menu buttons */
+.mobile-menu button {
+  color: #333;
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 12px 20px;
+  margin: 8px 0;
+  font-size: 1.1rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+}
+
+.mobile-menu button:hover {
+  background-color: rgba(255, 255, 255, 0.15);
 }
 
 /* ==== HAMBURGER (Mobile) ==== */
@@ -129,6 +176,9 @@
 @media (max-width: 768px) {
   .nav-links {
     display: none;
+  }
+  .logo{
+    font-size: 2rem;
   }
 
   .hamburger {

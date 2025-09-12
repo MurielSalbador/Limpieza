@@ -1,40 +1,23 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import "../styles/services.css";
 
 const services = [
-  {
-    titulo: "Limpieza de casas y departamentos",
-    img: "/images/services/casas.jpg",
-  },
-  {
-    titulo: "Limpieza de oficinas y comercios",
-    img: "/images/services/oficinas.jpg",
-  },
-  {
-    titulo: "Limpieza profunda y desinfección",
-    img: "/images/services/profunda.jpg",
-  },
-  {
-    titulo: "Limpieza de vidrios y ventanas",
-    img: "/images/services/vidrios.jpg",
-  },
-  {
-    titulo: "Limpieza de tapizados y alfombras",
-    img: "/images/services/tapizados.jpg",
-  },
+  { titulo: "Limpieza de casas y departamentos", img: "/images/services/casas.jpg" },
+  { titulo: "Limpieza de oficinas y comercios", img: "/images/services/oficinas.jpg" },
+  { titulo: "Limpieza profunda y desinfección", img: "/images/services/profunda.jpg" },
+  { titulo: "Limpieza de vidrios y ventanas", img: "/images/services/vidrios.jpg" },
+  { titulo: "Limpieza de tapizados y alfombras", img: "/images/services/tapizados.jpg" },
   { titulo: "Limpieza final de obra", img: "/images/services/obra.jpg" },
-  {
-    titulo: "Aromatización y sanitización de ambientes",
-    img: "/images/services/aromatizacion.jpg",
-  },
+  { titulo: "Aromatización y sanitización de ambientes", img: "/images/services/aromatizacion.jpg" },
 ];
 
 export default function Services() {
   const [selected, setSelected] = useState(0);
-  const scrollRef = useRef(null);
   const navigate = useNavigate();
+
+  const touchStartX = useRef(null);
 
   const prevService = () => {
     setSelected((prev) => (prev === 0 ? services.length - 1 : prev - 1));
@@ -48,52 +31,62 @@ export default function Services() {
     navigate("/services", { state: { service: services[selected] } });
   };
 
-  useEffect(() => {
-    const el = scrollRef.current;
-    if (!el) return;
+  // 👉 lógica swipe
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
 
-    const onScroll = () => {
-      const cardWidth = el.firstChild.offsetWidth; // ancho de cada tarjeta
-      const index = Math.round(el.scrollLeft / cardWidth);
-      setSelected(index);
-    };
+  const handleTouchEnd = (e) => {
+    if (touchStartX.current === null) return;
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchStartX.current - touchEndX;
 
-    el.addEventListener("scroll", onScroll);
-    return () => el.removeEventListener("scroll", onScroll);
-  }, []);
+    if (diff > 50) {
+      // swipe izquierda → siguiente
+      nextService();
+    } else if (diff < -50) {
+      // swipe derecha → anterior
+      prevService();
+    }
+
+    touchStartX.current = null;
+  };
 
   return (
-    <div className="services-container" data-aos="fade-up">
+    <div
+      id="services"
+      className="services-container"
+      data-aos="fade-up"
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
       {/* Flechas */}
-      <button
-        className="arrow left"
-        onClick={prevService}
-        data-aos="fade-right"
-      >
+      <button className="arrow left" onClick={prevService} data-aos="fade-right">
         <ChevronLeft size={28} />
       </button>
-      <button
-        className="arrow right"
-        onClick={nextService}
-        data-aos="fade-left"
-      >
+      <button className="arrow right" onClick={nextService} data-aos="fade-left">
         <ChevronRight size={28} />
       </button>
 
       {/* Cards */}
-      <div className="cards" ref={scrollRef} data-aos="fade-up">
-  {services.map((service, index) => (
-    <div key={index} className="card-wrapper">
-      <div
-        className={`card ${selected === index ? "active" : ""}`}
-        onClick={() => setSelected(index)}
-      >
-        <img src={service.img} alt={service.titulo} />
-        <div className="card-title">{service.titulo}</div>
+      <div className="cards" data-aos="fade-up">
+        {services.map((service, index) => (
+          <div key={index} className="card-wrapper">
+            <div
+              className={`card 
+                ${selected === index ? "active" : ""} 
+                ${index === (selected - 1 + services.length) % services.length ? "left" : ""} 
+                ${index === (selected + 1) % services.length ? "right" : ""}`}
+              onClick={() => setSelected(index)}
+            >
+              <img src={service.img} alt={service.titulo} />
+              <div className="card-title" style={{ textAlign: "center" }}>
+                {service.titulo}
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
-    </div>
-  ))}
-</div>
 
       {/* Botón "Ver servicio" */}
       <div

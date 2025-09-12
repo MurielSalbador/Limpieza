@@ -4,12 +4,16 @@ import Hero from '../components/Hero'
 import ServiciosSlider from '../components/Services'
 import About from '../components/About'
 import Contact from '../components/Contact'
+import Footer from '../components/Footer'
+import Floating from '../components/AnimationWrapper'
 
 import "../styles/global.css"
+import { Import } from 'lucide-react'
 
 const Home = () => {
   return (
     <>
+   
      <div>
         <Header />
     </div>
@@ -28,6 +32,10 @@ const Home = () => {
 
      <div>
       <Contact />
+    </div>
+
+    <div>
+      <Footer />
     </div>
     </>
   )

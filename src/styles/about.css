@@ -4,19 +4,23 @@ body {
 }
 
 /* === ESTRUCTURA ESCRITORIO === */
+.carousel-layout-container{
+  margin-top: -1000px;
+}
 .carousel-container { 
-  background: rgb(128, 226, 71);
+ 
+  background: rgb(192, 216, 255);
   display: flex; 
   justify-content: center;   
   align-items: center;       
-  width: 100%;               /* 🔥 ocupa todo el ancho */
-  max-width: none;           /* elimina el límite de 1600px */
-  height: 700px;             /* 🔥 más alto para destacar */
-  margin: 0;                 /* 🔥 pegado al bloque superior */
-  border-radius: 0;          /* 🔥 esquinas rectas */
-  box-shadow: none;          /* opcional: sin sombra, queda estilo "sección" */
-  overflow: hidden;           
-  position: relative;
+  width: 100%;               
+  max-width: none;           
+  height: 700px;          
+  margin: 0;                
+  border-radius: 0;        
+  box-shadow: #000;          /* opcional: sin sombra, queda estilo "sección" */
+            
+  
 }
 
 .carousel-left { 
@@ -35,6 +39,7 @@ body {
 }
 
 .carousel-layout {
+  margin-top: -150px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -51,14 +56,7 @@ body {
   background-repeat: no-repeat; 
 }
 
-.carousel-border { 
-  background-color: #122903; 
-  height: 100%; 
-  flex-grow: 8; 
-  max-width: 2px; 
-  margin: 0 150px;
-  z-index: 0; 
-}
+
 
 .carousel-right {
   flex: 1;               /* ocupa el espacio sobrante */
@@ -96,9 +94,9 @@ body {
   cursor: pointer;
   padding: 25px 75px;
   transition: 0.3s ease;
-  border-right: 4px solid transparent; /* reserva espacio */
+  border-right: 4px solid transparent; 
   white-space: nowrap;
-  font-weight: 600; /* 🔑 todos iguales, evita el "salto" */
+  font-weight: 600; 
 }
 
 .carousel-left .list li.item label {
@@ -113,7 +111,7 @@ body {
   opacity: 1;
   background: rgba(0, 0, 0, 0.05);
   color: #000;
-  border-right: 4px solid #64b535; /* color destacado, mismo ancho */
+  border-right: 4px solid rgb(125, 163, 224); /* color destacado, mismo ancho */
 }
 
 
@@ -254,14 +252,14 @@ body {
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
-    .carousel-container {
-    width: 100% !important;      /* ocupa todo el ancho de la pantalla */
-    margin: 0 auto !important;   /* centra sin empujar a los costados */
-    padding: 10px;               /* un poco de respiro interno */
-    height: auto !important;     /* que crezca según el contenido */
-    overflow-x: hidden;          /* evita scroll lateral */
-    box-sizing: border-box;      /* incluye padding dentro del ancho */
-    border-radius: 0 !important;
+   .carousel-container {
+    margin-top: -300px;        /* fuerza que suba */
+    width: 100%;
+    padding: 10px;
+    height: auto;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    border-radius: 0;
   }
 
   .cards-about {
@@ -280,7 +278,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 30px 20px;
+    padding: 20px 20px;
     gap: 10px;
   width: 70%;
     border-radius: 10px;
@@ -296,12 +294,14 @@ body {
   .cards-about .green { background-color: #22c55e; }
 
   .cards-about .card-about p.tip {
+text-align: center;
     font-size: 1.5em;
     font-weight: 700;
     margin: 10px 0 5px;
   }
 
   .cards-about .card-about p.second-text {
+    text-align: center;
     font-size: 1.3em;
     margin: 0;
   }
