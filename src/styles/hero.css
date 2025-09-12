@@ -56,7 +56,7 @@ body {
   margin: 0;
   padding: 0;
   transform: rotate(-90deg);
-  margin-top: -350px;
+  margin-top: -355px;
   background-color: rgb(192, 216, 255);
 }
 
@@ -82,14 +82,13 @@ body {
 
 .shadow__btn {
   background: rgb(128, 226, 71);
-  box-shadow: 0 0 25px rgb(128, 221, 74);
+
 }
 
 .shadow__btn:hover {
   box-shadow: 0 0 5px rgb(144, 255, 80),
-              0 0 25px rgb(144, 255, 80),
-              0 0 50px rgb(144, 255, 80),
-              0 0 100px rgb(144, 255, 80);
+              0 0 25px rgb(144, 255, 80)
+              
 }
 
 .sub {

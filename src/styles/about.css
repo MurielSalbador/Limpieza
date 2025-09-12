@@ -8,19 +8,19 @@ body {
   margin-top: -1000px;
 }
 .carousel-container { 
- 
   background: rgb(192, 216, 255);
   display: flex; 
   justify-content: center;   
   align-items: center;       
-  width: 100%;               
-  max-width: none;           
-  height: 700px;          
-  margin: 0;                
-  border-radius: 0;        
-  box-shadow: #000;          /* opcional: sin sombra, queda estilo "sección" */
-            
-  
+  width: 100%;               /* 🔥 ocupa todo el ancho */
+  max-width: none;           /* elimina el límite de 1600px */
+
+  height: 700px;             /* 🔥 más alto para destacar */
+  margin: 0;                 /* 🔥 pegado al bloque superior */
+  border-radius: 0;          /* 🔥 esquinas rectas */
+  box-shadow: none;          /* opcional: sin sombra, queda estilo "sección" */
+  overflow: hidden;           
+  position: relative;
 }
 
 .carousel-left { 
@@ -39,7 +39,8 @@ body {
 }
 
 .carousel-layout {
-  margin-top: -150px;
+  margin-left: 80px;
+  margin-top: -300px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -132,7 +133,7 @@ body {
 }
 
 .carousel-left ul li.active {
-  border-color: #083a08;
+  border-color: rgb(125, 163, 224);
   font-weight: bold;
   color: #083a08;
   background-color: #f0f8ff;
@@ -252,6 +253,11 @@ body {
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
+
+.carousel-layout-container{
+margin-top: 100px;
+}
+
    .carousel-container {
     margin-top: -300px;        /* fuerza que suba */
     width: 100%;

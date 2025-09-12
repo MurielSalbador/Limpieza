@@ -12,7 +12,7 @@ export default function Contact() {
   }, []);
 
   return (
-    <section id="contact" className="contact-section" data-aos="zoom-in">
+    <section id="contact" className="contact-section">
       <h2 className="contact-title" data-aos="fade-down">¡Contáctanos!</h2>
       <p className="contact-subtitle" data-aos="fade-up">
         ¿Tienes dudas, quieres un presupuesto o agendar una limpieza?
