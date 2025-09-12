@@ -158,3 +158,87 @@ body {
     font-size: 0.9rem;
   }
 }
+
+@media (max-width: 912px) {
+
+
+  .hero-img-logo{
+    margin-top: -195px;
+  }
+ 
+  .sub {
+    font-size: 2rem;
+  }
+
+    .shadow__btn{
+   font-size: 2rem;
+  }
+}
+
+@media (max-width: 400px) {
+
+
+  .hero-img-logo{
+    margin-top: -65px;
+  }
+ 
+  .sub {
+    font-size: 1.3rem;
+  }
+
+    .shadow__btn{
+   font-size: 2rem;
+  }
+}
+
+@media (max-width: 1280px) {
+  
+.hero-img img{
+    height: 80%;        /* 🔥 menos alto para móviles */
+    max-width: 85%;  
+  }
+  .hero-content h1 {
+    font-size: 3.5rem;    /* más chico que en desktop grande */
+  }
+
+  .sub {
+    font-size: 1rem;
+    max-width: 600px;     /* más angosto para que no se estire */
+  }
+
+  .shadow__btn {
+    font-size: 1rem;
+    padding: 8px 16px;
+  }
+
+  .hero-img-logo {
+    margin-top: -280px;   /* corrige la posición */
+  }
+}
+
+@media (max-width: 1024px) {
+
+  .hero-content h1 {
+    font-size: 2.8rem;      /* más chico que en 1280px */
+  }
+
+  .sub {
+    font-size: 1rem;
+    max-width: 550px;       /* restringe ancho del texto */
+  }
+
+  .shadow__btn {
+    font-size: 1rem;
+    padding: 8px 14px;
+  }
+
+  .hero-img-logo {
+    margin-top: -230px;     /* ajusta posición */
+    margin-right: 20px;
+  }
+
+  .hero-contact-info {
+    font-size: 1.5rem;      /* más chico para que entre */
+    height: 110px;
+  }
+}

@@ -185,3 +185,10 @@ header button.active::after {
     display: flex;
   }
 }
+
+@media (max-width: 912px) {
+
+.header button{
+  font-size: 1.5rem;
+}
+}

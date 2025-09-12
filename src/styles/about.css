@@ -323,3 +323,26 @@ text-align: center;
     box-shadow: none;
   }
 }
+
+@media (max-width: 912px) {
+
+  .carousel-layout-container{
+margin-top: -300px;
+}
+ 
+}
+
+@media (max-width: 1280px) {
+  
+  .carousel-layout-container{
+margin-top: -600px;
+}
+}
+
+@media (max-width: 1024px) {
+
+  .carousel-layout-container{
+margin-top: -500px;
+}
+
+}
