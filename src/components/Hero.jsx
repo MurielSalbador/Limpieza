@@ -7,7 +7,7 @@ const Hero = () => {
       <section className="hero">
         {/* Imagen del equipo */}
         <div className="hero-img" data-aos-delay="150">
-          <img src="/images/hero/HeroIMG.png" alt="Equipo Nova Clean" />
+          <img src="/images/hero/HeroIMG.jpg" alt="Equipo Nova Clean" />
         </div>
 
         {/* Texto principal debajo */}
