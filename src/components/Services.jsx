@@ -5,13 +5,15 @@ import "../styles/services.css";
 
 const services = [
   { titulo: "Limpieza de casas y departamentos", img: "/images/services/casas.jpg" },
-  { titulo: "Limpieza de oficinas y comercios", img: "/images/services/oficinas.jpg" },
-  { titulo: "Limpieza profunda y desinfección", img: "/images/services/profunda.jpg" },
-  { titulo: "Limpieza de vidrios y ventanas", img: "/images/services/vidrios.jpg" },
-  { titulo: "Limpieza de tapizados y alfombras", img: "/images/services/tapizados.jpg" },
+  { titulo: "Limpieza de oficinas y locales comerciales", img: "/images/services/oficinas.jpg" },
+  { titulo: "Limpieza profunda y desinfección completa", img: "/images/services/profunda.jpg" },
+  { titulo: "Limpieza de vidrios y ventanales", img: "/images/services/vidrios.jpg" },
+  { titulo: "Limpieza y cuidado de tapizados y alfombras", img: "/images/services/tapizados.jpg" },
   { titulo: "Limpieza final de obra", img: "/images/services/obra.jpg" },
   { titulo: "Aromatización y sanitización de ambientes", img: "/images/services/aromatizacion.jpg" },
+  { titulo: "Limpieza de shoppings y grandes superficies", img: "/images/services/LimpiezaGrande.webp" },
 ];
+
 
 export default function Services() {
   const [selected, setSelected] = useState(0);

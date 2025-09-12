@@ -16,22 +16,25 @@ export default function ServiceDetail() {
   const whatsappMessage = `Hola! Quiero contactar el servicio de ${service.titulo}`;
 
   // Textos de cada servicio
-  const serviceDescriptions = {
+    const serviceDescriptions = {
     "Limpieza final de obra":
       "Nos ocupamos de la exigente tarea de dejar impecable cada espacio tras una construcción o reforma. Coordinamos cada detalle para eliminar polvo, restos de materiales y suciedad acumulada, entregando resultados limpios, seguros y listos para habitar.",
     "Limpieza de tapizados y alfombras":
       "Con personal capacitado y equipamiento específico, removemos la suciedad y manchas más profundas sin dañar telas ni superficies. Dejamos alfombras y tapizados frescos, higienizados y con una nueva vida útil.",
-    "Limpieza de vidrios y ventanas":
+    "Limpieza de vidrios y ventanales":
       "Logramos cristales transparentes y brillantes, libres de manchas y polvo. Nuestro servicio cuida cada detalle para que la luz natural embellezca tus ambientes y tus ventanas se vean siempre impecables.",
     "Limpieza de casas y departamentos":
       "Nuestro equipo especializado transforma cada hogar en un espacio reluciente, seguro y acogedor. Nos ocupamos de cada detalle, desde los rincones más pequeños hasta las superficies de uso diario, para que disfrutes de tu casa limpia como nueva.",
-    "Limpieza de oficinas y comercios":
-      "Sabemos que un ambiente de trabajo limpio y ordenado aumenta la productividad y transmite confianza a tus clientes. Ofrecemos un servicio profesional y discreto que mantiene tu oficina o local impecable día tras día.",
+    "Limpieza de oficinas y locales comerciales":
+      "Un ambiente de trabajo limpio y ordenado aumenta la productividad y transmite confianza a tus clientes. Ofrecemos un servicio profesional y discreto que mantiene tu oficina o local impecable día tras día.",
     "Aromatización y sanitización de ambientes":
       "Creamos entornos frescos y agradables con técnicas de aromatización y desinfección que mejoran la calidad del aire. Nuestros productos eliminan bacterias y malos olores, dejando un ambiente saludable, limpio y renovado.",
-    "Limpieza profunda y desinfección":
+    "Limpieza profunda y desinfección completa":
       "Eliminamos la suciedad más difícil y los agentes que afectan la higiene de los espacios. Utilizamos productos de calidad y técnicas modernas para garantizar ambientes saludables, seguros y completamente desinfectados.",
+    "Limpieza de shoppings y grandes superficies":
+      "Nos especializamos en mantener impecables espacios de gran concurrencia como shoppings, galerías y superficies comerciales. Contamos con equipos de trabajo adaptados a grandes áreas, garantizando limpieza constante, seguridad y una experiencia agradable para cada visitante.",
   };
+
 
   return (
     <>
