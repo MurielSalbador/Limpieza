@@ -135,7 +135,7 @@ body {
     max-width: 100%;  
   }
   .hero-img-logo{
-    margin-top: -74px;
+    margin-top: -78px;
   }
   .sub {
     font-size: 2rem; 
@@ -156,38 +156,6 @@ body {
 
   .sub {
     font-size: 0.9rem;
-  }
-}
-
-@media (max-width: 912px) {
-
-
-  .hero-img-logo{
-    margin-top: -195px;
-  }
- 
-  .sub {
-    font-size: 2rem;
-  }
-
-    .shadow__btn{
-   font-size: 2rem;
-  }
-}
-
-@media (max-width: 400px) {
-
-
-  .hero-img-logo{
-    margin-top: -75px;
-  }
- 
-  .sub {
-    font-size: 1.3rem;
-  }
-
-    .shadow__btn{
-   font-size: 1.5rem;
   }
 }
 
