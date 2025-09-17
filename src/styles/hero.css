@@ -134,8 +134,8 @@ body {
     height: 100%;        /* 🔥 menos alto para móviles */
     max-width: 100%;  
   }
-  .hero-img-logo{
-    margin-top: -78px;
+  .hero-img-logo {
+    margin-top: -78px; /* 🔥 este ya existía y no se pisa */
   }
   .sub {
     font-size: 2rem; 
@@ -160,7 +160,68 @@ body {
 }
 
 
+@media (min-width: 540px) {
+  .hero-img-logo{
+    margin-top: -105px;
+  }
+  .hero-content{
+    margin-top: -105px;
+  }
+  .shadow__btn{
+    margin-top: 20px;
+    font-size: 1rem;
+  }
+   .sub {
+    font-size: 2rem;
+  }
+
+}
+
+@media (min-width: 1280px) {
+  .hero-img-logo{
+    margin-top: -275px;
+  }
+  .hero-content{
+    margin-top: -275px;
+  }
+  .shadow__btn{
+    margin-top: 20px;
+    font-size: 1rem;
+  }
+   .sub {
+    font-size: 2rem;
+  }
+
+}
+
+@media (min-width: 1024px) {
+  .hero-img-logo{
+    margin-top: -395px;
+  }
+  .hero-content{
+    margin-top: -275px;
+  }
+  .shadow__btn{
+    margin-top: 20px;
+    font-size: 2rem;
+  }
+   .sub {
+    font-size: 2rem;
+  }
+
+}
 
 
+@media (min-width: 769px) and (max-width: 1220px) {
+  .hero-img-logo{
+    margin-top: -90px;
+  }
+  .shadow__btn{
+    margin-top: 20px;
+    font-size: 1rem;
+  }
+   .sub {
+    font-size: 2rem;
+  }
 
-
+}

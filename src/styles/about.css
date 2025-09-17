@@ -332,7 +332,12 @@ margin-top: -300px;
  
 }
 
+@media (min-width: 1280px) {
+  .carousel-layout-container{
+margin-top: -580px;
+}
 
+}
 
 
 
